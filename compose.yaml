@@ -1,0 +1,16 @@
+version: "3"
+services:
+  janbari:
+    container_name: janbari-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - 24678:24678
+    command: bash -c "cd /app/code && npm install && npm run dev"
+    env_file:
+      - .env
