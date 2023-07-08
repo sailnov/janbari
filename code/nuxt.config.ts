@@ -17,4 +17,7 @@ export default defineNuxtConfig({
         download: false,
         useStylesheet: true,
     },
+    app: {
+        baseURL: "/janbari/"
+    }
 })
