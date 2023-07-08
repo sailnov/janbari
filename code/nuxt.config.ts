@@ -21,11 +21,11 @@ export default defineNuxtConfig({
     app: {
         head: {
             link: [
-                { rel: "manifest", href: "/manifest.webmanifest" },
-                { rel: "icon", type: "image/jpg", href: "/fabicon.jpg" },
-                { rel: "apple-touch-icon", href: "/fabicon.jpg" },
-                { rel: "mask-icon", href: "/fabicon.jpg", color: "#ffffff" },
-                { rel: "shortcut icon", href: "/fabicon.jpg" },
+                { rel: "manifest", href: "https://sailnov.github.io/janbari/manifest.webmanifest" },
+                { rel: "icon", type: "image/jpg", href: "https://sailnov.github.io/janbari/fabicon.jpg" },
+                { rel: "apple-touch-icon", href: "https://sailnov.github.io/janbari/fabicon.jpg" },
+                { rel: "mask-icon", href: "https://sailnov.github.io/janbari/fabicon.jpg", color: "#ffffff" },
+                { rel: "shortcut icon", href: "https://sailnov.github.io/janbari/fabicon.jpg" },
             ],
             title: "JANBARI",
             meta: [
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     },
     pwa: {
         registerType: "autoUpdate",
-        includeAssets: ["fabicon.jpg"],
+        includeAssets: ["https://sailnov.github.io/janbari/fabicon.jpg"],
         client: {
             installPrompt: true,
         },
