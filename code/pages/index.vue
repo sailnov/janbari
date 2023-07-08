@@ -138,7 +138,7 @@
             const x100PrevDiff = Math.abs(x100Prev - x100Value);
             return x100Diff < x100PrevDiff ? current : prev;
         });
-        return `設定${deme[0]}: ${deme[1]}%`;
+        return `設定${deme[0]}: 1 / ${deme[1]}`;
     };
 
 </script>
@@ -257,7 +257,7 @@
                                             </div>
                                             <div class="text-sm ml-auto">
                                                 <code>
-                                                    {{ (myGameCount > 0 && item.count > 0 ? round((myGameCount / item.count), 2) : 0) }}%
+                                                    1 / {{ (myGameCount > 0 && item.count > 0 ? round((myGameCount / item.count), 2) : 0) }}
                                                 </code>
                                             </div>
                                         </div>
