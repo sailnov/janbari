@@ -237,13 +237,13 @@
                                     <code>{{ hazureCount }}</code>
                                 </div>
                                 <button
-                                    :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400`"
+                                    :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400 touch-manipulation`"
                                     @click="hazureCount++ & myGameCount++"
                                     v-if="demeIsIncrease"
                                 >
                                     <Icon class="text-base-100" name="tabler:exposure-plus-1" size="24" />
                                 </button>
-                                <button :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400`" @click="hazureCount-- & myGameCount--" v-else>
+                                <button :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400 touch-manipulation`" @click="hazureCount-- & myGameCount--" v-else>
                                     <Icon class="text-base-100" name="tabler:exposure-minus-1" size="24" />
                                 </button>
                                 <div class="text-xs">はずれ</div>
@@ -260,7 +260,7 @@
                                     :class="`btn btn-lg btn-square mx-auto mb-2 touch-manipulation`"
                                     :style="`background-color: ${item.color}`"
                                     @click="item.count++ & myGameCount++"
-                                    v-show="demeIsIncrease"
+                                    v-if="demeIsIncrease"
                                 >
                                     <Icon class="text-base-100" name="tabler:exposure-plus-1" size="24" />
                                 </button>
@@ -268,7 +268,7 @@
                                     :class="`btn btn-lg btn-square mx-auto mb-2 touch-manipulation`"
                                     :style="`background-color: ${item.color}`"
                                     @click="item.count-- & myGameCount--"
-                                    v-show="!demeIsIncrease"
+                                    v-else
                                 >
                                     <Icon class="text-base-100" name="tabler:exposure-minus-1" size="24" />
                                 </button>
