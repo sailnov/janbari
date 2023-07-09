@@ -239,11 +239,15 @@
                                 <button
                                     :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400 touch-manipulation`"
                                     @click="hazureCount++ & myGameCount++"
-                                    v-if="demeIsIncrease"
+                                    v-show="demeIsIncrease"
                                 >
                                     <Icon class="text-base-100" name="tabler:exposure-plus-1" size="24" />
                                 </button>
-                                <button :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400 touch-manipulation`" @click="hazureCount-- & myGameCount--" v-else>
+                                <button
+                                    :class="`btn btn-lg btn-square mx-auto mb-2 bg-gray-400 touch-manipulation`"
+                                    @click="hazureCount-- & myGameCount--"
+                                    v-show="!demeIsIncrease"
+                                >
                                     <Icon class="text-base-100" name="tabler:exposure-minus-1" size="24" />
                                 </button>
                                 <div class="text-xs">はずれ</div>
