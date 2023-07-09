@@ -30,7 +30,6 @@
                         5: 7.3,
                         6: 7.3,
                     },
-                    hasDiffarence: false,
                 },
                 {
                     id: 2,
@@ -45,7 +44,6 @@
                         5: 5.76,
                         6: 5.67,
                     },
-                    hasDiffarence: true,
                 },
                 {
                     id: 3,
@@ -60,7 +58,6 @@
                         5: 35.52,
                         6: 35.52,
                     },
-                    hasDiffarence: false,
                 },
                 {
                     id: 4,
@@ -75,7 +72,6 @@
                         5: 1083.9,
                         6: 1083.9,
                     },
-                    hasDiffarence: false,
                 },
                 {
                     id: 5,
@@ -90,7 +86,6 @@
                         5: 1100.0,
                         6: 1100.0,
                     },
-                    hasDiffarence: false,
                 },
                 {
                     id: 6,
@@ -105,7 +100,6 @@
                         5: 240.1,
                         6: 219.9,
                     },
-                    hasDiffarence: true,
                 },
                 {
                     id: 7,
@@ -120,7 +114,6 @@
                         5: 299.3,
                         6: 262.1,
                     },
-                    hasDiffarence: true,
                 },
             ],
         },
@@ -151,7 +144,17 @@
             }
             return x100Diff < x100PrevDiff ? current : prev;
         });
-        return `設定${deme[0]}: 1 / ${deme[1]}`;
+        // if all demerate is same
+        let sameFlag = true;
+        Object.entries(demerates).forEach(([, demerate]) => {
+            if (deme[1] !== demerate) {
+                sameFlag = false;
+            }
+        });
+        if (sameFlag) {
+            return `共通 : 1 / ${deme[1]}`;
+        }
+        return `設定${deme[0]} : 1 / ${deme[1]}`;
     };
 
     const resetAll = () => {
@@ -254,18 +257,18 @@
                                     <code>{{ item.count }}</code>
                                 </div>
                                 <button
-                                    :class="`btn btn-lg btn-square mx-auto mb-2`"
+                                    :class="`btn btn-lg btn-square mx-auto mb-2 touch-manipulation`"
                                     :style="`background-color: ${item.color}`"
                                     @click="item.count++ & myGameCount++"
-                                    v-if="demeIsIncrease"
+                                    v-show="demeIsIncrease"
                                 >
                                     <Icon class="text-base-100" name="tabler:exposure-plus-1" size="24" />
                                 </button>
                                 <button
-                                    :class="`btn btn-lg btn-square mx-auto mb-2`"
+                                    :class="`btn btn-lg btn-square mx-auto mb-2 touch-manipulation`"
                                     :style="`background-color: ${item.color}`"
                                     @click="item.count-- & myGameCount--"
-                                    v-else
+                                    v-show="!demeIsIncrease"
                                 >
                                     <Icon class="text-base-100" name="tabler:exposure-minus-1" size="24" />
                                 </button>
@@ -289,8 +292,7 @@
                                             <div class="">
                                                 <div class="text-sm">{{ item.name }}</div>
                                                 <div class="text-xs">
-                                                    <span class="font-bold" v-if="item.hasDiffarence === false"> 設定差なし </span>
-                                                    <span class="font-bold" v-else-if="myGameCount > 0 && item.count > 0">
+                                                    <span class="font-bold" v-if="myGameCount > 0 && item.count > 0">
                                                         {{
                                                             findNearestDeme(
                                                                 item.demerates,
