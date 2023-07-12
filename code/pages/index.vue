@@ -190,7 +190,7 @@
 <template>
     <div class="navbar bg-base-200">
         <div class="navbar-start">
-            <audio src="/gogo.mp3" class="hidden" id="gogo"></audio>
+            <audio src="https://sailnov.github.io/janbari/gogo.mp3" class="hidden" id="gogo"></audio>
             <button class="btn btn-circle btn-ghost" @click="playGoGoSound" :disabled="goGoIsPlay">
                 <img src="/gogo.png" alt="">
             </button>
