@@ -167,13 +167,32 @@
         startGameCount.value = 0;
         myGameCount.value = 0;
     };
+
+    const goGoIsPlay = ref(false);
+
+    const playGoGoSound = () => {
+        if (goGoIsPlay.value) {
+            return;
+        }
+        if (process.server) {
+            return;
+        }
+        goGoIsPlay.value = true;
+        const audio = document.getElementById("gogo");
+        audio.volume = 0.3;
+        audio.play();
+        audio.addEventListener("ended", () => {
+            goGoIsPlay.value = false;
+        });
+    };
 </script>
 
 <template>
     <div class="navbar bg-base-200">
         <div class="navbar-start">
-            <button class="btn btn-circle btn-ghost">
-                <Icon name="material-symbols:settings-outline" size="24" />
+            <audio src="/gogo.mp3" class="hidden" id="gogo"></audio>
+            <button class="btn btn-circle btn-ghost" @click="playGoGoSound" :disabled="goGoIsPlay">
+                <img src="/gogo.png" alt="">
             </button>
         </div>
         <div class="navbar-center">
