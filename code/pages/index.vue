@@ -192,7 +192,7 @@
         <div class="navbar-start">
             <audio src="https://sailnov.github.io/janbari/gogo.mp3" class="hidden" id="gogo"></audio>
             <button class="btn btn-circle btn-ghost" @click="playGoGoSound" :disabled="goGoIsPlay">
-                <img src="/gogo.png" alt="">
+                GOGO
             </button>
         </div>
         <div class="navbar-center">
